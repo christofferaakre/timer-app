@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16pt;
+}
+
+body {
+    background: #212121;
+    overflow: hidden;
+}
+
+h3 {
+    font-size: 25pt;
+    margin-bottom: 5px;
+}
+
+input {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: black;
+}
+
+button {
+    background-color: #03A9F4;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+
+.header {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#timer-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+#timer-form > * {
+    margin-bottom: 10px;
+}
+
+#timer-form > button {
+    width: 75%;
+    margin: auto
+}
+
+.timer {
+    font-size: 45pt;
+}

@@ -5,13 +5,35 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Title of the elctron app</title>
+    <link rel="stylesheet" href="./styles.css">
+
+    <title>Timer</title>
   </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-    <script src="./renderer.js"></script>
+  <body id="body">
+    <div class="header">
+    <h1>Timer</h1> 
+    </div>
+    <div class="container">
+      <div class="form-container">
+        <h3 id="form-header">Set a new timer</h3>
+        <form id="timer-form">
+          <input 
+          type="text" 
+          name="time" 
+          id="time" 
+          placeholder='e.g. "5 minutes"'
+          >
+          <button type='submit'>Submit</button>
+        </form>
+      </div>
+      
+      <div class="timer-container">
+        <span id="timer" class="timer">
+          hh:mm:ss
+        </span>
+      </div>
+    </div>
+
+    <div class="footer"></div>
   </body>
 </html>

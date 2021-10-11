@@ -1,6 +1,10 @@
 const path = require('path')
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 
+// global variables
+let window
+
+// use electron-reload if in dev environment
 if (process.env.NODE_ENV == 'dev') {
   require('electron-reload')(__dirname, {
       electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
@@ -8,26 +12,31 @@ if (process.env.NODE_ENV == 'dev') {
   })
 }
 
-console.log(process.env.NODE_ENV)
-
 function createWindow() {
-    const window = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-           preload: path.join(__dirname, 'preload.js')
+    window = new BrowserWindow({ webPreferences: {
+           preload: path.join(__dirname, 'preload.js'),
+           nodeIntegration: true
         }
     })
+    // only show menu with dev tools, etc. if in dev
+    // environment
+    if (process.env.NODE_ENV !== 'dev') {
+        window.removeMenu()
+    }
 
     window.loadFile('index.html')
+
+    return window
 }
 
 app.whenReady().then(() => {
-    createWindow()
+   window = createWindow()
 
+   // if all windows are closed but app is still open,
+   // then just create a new window on activation
    app.on('activate', () => {
        if (BrowserWindow.getAllWindows().length === 0) {
-           createWindow()
+           window = createWindow()
        }
    })
 })
@@ -39,3 +48,9 @@ app.on('window-all-closed', () => {
        app.exit()
    }
 })
+
+// focus window when timer finishes
+ipcMain.on("timer-end", (event, arg) => {
+    console.log('timer-end')
+    window.show()
+    })
