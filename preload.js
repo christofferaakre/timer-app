@@ -1,7 +1,7 @@
 const path = require('path')
 const {ipcRenderer} = require('electron')
 
-const {parseTime, padNum} = require('./utils')
+const {parseTime, padNum, parseTimeInput} = require('./utils')
 
 // global variables
 let timerSpan
@@ -9,27 +9,28 @@ let currentTime
 let timerID
 let audio
 
-
-
-function stopTimer() {
+function stopTimer({playAudio=true, focus=true, clear=false}) {
     clearInterval(timerID)
-    console.log('stopTimer')
     currentTime = null
-    // This setTimeout 0 is necessary
-    // to avoid race conditions.
-    // See https://stackoverflow.com/questions/779379/why-is-settimeoutfn-0-sometimes-useful 
-    setTimeout(() => {
-        timerSpan.innerText = "Time's up!"
-    }, 0)
-    // see handling of this message by ipcMain in main.js
-   ipcRenderer.send('timer-end', null) 
-   audio.play();
 
+    // this clear parameter is used if you want
+    // to use stopTimer to just clear the timer
+    if (!clear) {
+        // This setTimeout 0 is necessary
+        // to avoid race conditions.
+        // See https://stackoverflow.com/questions/779379/why-is-settimeoutfn-0-sometimes-useful 
+        setTimeout(() => {
+            timerSpan.innerText = "Time's up!"
+        }, 0)
+    // see handling of this message by ipcMain in main.js
+    if (focus) ipcRenderer.send('timer-end', null) 
+    if (playAudio) audio.play();
+
+    }
 }
 
 function decrementTimer() {
     [hours, minutes, seconds] = currentTime
-    console.log(hours, minutes, seconds)
     if (seconds >= 1) {
         seconds -= 1
     }
@@ -46,7 +47,7 @@ function decrementTimer() {
         hours = 0
         minutes = 0
         seconds = 0
-        stopTimer()
+        stopTimer({})
     }
  
     currentTime = [hours, minutes, seconds]
@@ -54,6 +55,8 @@ function decrementTimer() {
 }
 
 function setTimer(hours, minutes, seconds) {
+// clear current timer if one exists
+   stopTimer({clear: true})
    timerSpan.innerText = parseTime(hours, minutes, seconds)
    currentTime = [hours, minutes, seconds]
    timerID = setInterval(decrementTimer, 1000);
@@ -72,16 +75,15 @@ window.addEventListener('DOMContentLoaded', () => {
         input = e.target[0].value;
 
         // regex matching hh:mm:ss time format
-        const regex = /[0-9]{2}:[0-9]{2}:[0-9]{2}/g
-        match = input.match(regex)
-        if (match) {
-            let [hours, minutes, seconds] = match[0].split(':')
+        let time = parseTimeInput(input)
+        if (time) {
+            [hours, minutes, seconds] = time
             setTimer(hours, minutes, seconds)
         }
-
         else {
-            // TODO: form error handling
-            console.log("You must use one of the supported input formats")
+            console.warn(`Something went wrong. parseTimeInput returned
+            a falsy value`)
         }
     }
-})
+    }
+)
