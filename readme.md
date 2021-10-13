@@ -5,9 +5,10 @@ written in [Electron.js](https://www.electronjs.org/)
 ![timer app demo](img/demo.gif)
 
 ## Installation instructions
-* mac and linux useres:
+* mac and linux users:
     * Download zip from
-      [Releases](https://github.com/christofferaakre/timer-app/releases)
+      [Releases](https://github.com/christofferaakre/timer-app/releases). Mac
+users should download the file whose name contains the word `darwin`.
     * Unzip archive
     * Run executable file
 * windows users:
