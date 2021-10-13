@@ -4,6 +4,23 @@ written in [Electron.js](https://www.electronjs.org/)
 
 ![timer app demo](img/demo.gif)
 
+## FAQ
+* **Why would I use this timer app over other timer apps?**
+<br>
+
+    * The first point I would mention is that this app is open source, which can be a big selling point if you care about that or are tech-savy and want to contribute to or modify the code in an way. Yes there, are a lot of open source timer apps, that's why I mention some other points here too
+    * The app is cross-platform, which narrows down the number of options out there down quite a bit, but still there are quite a few left.
+    * The app is minimalistic, no bloated ui or features you don't need. This ensures the app is always fast and reliable, and a small file size too
+    * You can type in phrases like `1 hour and 30 minutes` and the app will set a timer for 1 hour and 30 minutes accordingly, or you can use formats like `hh:mm:ss`. This is in my opinion a much better experience than the standard thing you get where you have to manually specify the number of hours, minutes, and seconds with sliders etc.
+    * The app is not intrusive except when the timer ends, when it plays a soft alert sound and brings itself to the foreground to notify you, but it doesn't use any kind of notifications. There is no data collection of any kind, and also no need to create some sort of account. One part of the project's vision is that any intrusive feature like playing a sound when the timer ends should be toggleable even if the developer thinks that 'obviously the user is going to want this feature'.
+* **I'm encountering an error, or the program doesn't work as expected. What do I do?**
+<br> 
+Please open an issue on this github repo or contact me at [christoffer.corfield@gmail.com](mailto:christoffer.corfield@gmail.com).
+
+* **Is there really not a windows version? Isn't the app supposed to be available for macOS, linux, *and* windows?**
+<br>
+Currently I have not been available to compile the app to a windows binary from my linux setup. So unfortunately, if you are on windows, there is no option other than to compile the source code yourself. In the future I would like to fix the issue preventing compilation for windows from linux from working.
+
 ## Installation instructions
 * mac and linux users:
     * Download zip from
@@ -15,6 +32,15 @@ users should download the file whose name contains the word `darwin`.
     * Compile from source according to dev instructions below. in the future
       I would like to compile windows binaries from my linux setup, but at the
 moment it is not working, so unfortunatel you will have to compile the source code yourself
+
+## Development goals/vision
+* The app should be minimalistic, not bloated. However,
+customisability is a good thing, not a bad thing.
+* User friendly, simple to use UI
+* Intrusive only when it needs to be, i.e. when a timer ends, to play a sound and focus itself. But even these features should be toggleable
+* Equal functionality across Windows, MacOS and linux
+* 100% open-source forever
+* Please feel free to submit issues or pull requests!
 
 ## Usage
 * Enter the desired length of your timer into the input field, and press enter or click the Submit button. Supported time formats:
