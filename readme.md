@@ -6,7 +6,7 @@ written in [Electron.js](https://www.electronjs.org/)
 
 ## FAQ
 * **Why would I use this timer app over other timer apps?**
-    * The first point I would mention is that this app is open source, which can be a big selling point if you care about that or are tech-savy and want to contribute to or modify the code in an way. Yes there, are a lot of open source timer apps, that's why I mention some other points here too
+    * The first point I would mention is that this app is open source, which can be a big selling point if you care about that or are tech-savy and want to contribute to or modify the code in any way. Yes there are a lot of open source timer apps, that's why I mention some other points here too
     * The app is cross-platform, which narrows down the number of options out there down quite a bit, but still there are quite a few left.
     * The app is minimalistic, no bloated ui or features you don't need. This ensures the app is always fast and reliable, and a small file size too
     * You can type in phrases like `1 hour and 30 minutes` and the app will set a timer for 1 hour and 30 minutes accordingly, or you can use formats like `hh:mm:ss`. This is in my opinion a much better experience than the standard thing you get where you have to manually specify the number of hours, minutes, and seconds with sliders etc.
