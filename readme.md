@@ -6,19 +6,15 @@ written in [Electron.js](https://www.electronjs.org/)
 
 ## FAQ
 * **Why would I use this timer app over other timer apps?**
-<br>
-
     * The first point I would mention is that this app is open source, which can be a big selling point if you care about that or are tech-savy and want to contribute to or modify the code in an way. Yes there, are a lot of open source timer apps, that's why I mention some other points here too
     * The app is cross-platform, which narrows down the number of options out there down quite a bit, but still there are quite a few left.
     * The app is minimalistic, no bloated ui or features you don't need. This ensures the app is always fast and reliable, and a small file size too
     * You can type in phrases like `1 hour and 30 minutes` and the app will set a timer for 1 hour and 30 minutes accordingly, or you can use formats like `hh:mm:ss`. This is in my opinion a much better experience than the standard thing you get where you have to manually specify the number of hours, minutes, and seconds with sliders etc.
     * The app is not intrusive except when the timer ends, when it plays a soft alert sound and brings itself to the foreground to notify you, but it doesn't use any kind of notifications. There is no data collection of any kind, and also no need to create some sort of account. One part of the project's vision is that any intrusive feature like playing a sound when the timer ends should be toggleable even if the developer thinks that 'obviously the user is going to want this feature'.
 * **I'm encountering an error, or the program doesn't work as expected. What do I do?**
-<br> 
 Please open an issue on this github repo or contact me at [christoffer.corfield@gmail.com](mailto:christoffer.corfield@gmail.com).
 
 * **Is there really not a windows version? Isn't the app supposed to be available for macOS, linux, *and* windows?**
-<br>
 Currently I have not been available to compile the app to a windows binary from my linux setup. So unfortunately, if you are on windows, there is no option other than to compile the source code yourself. In the future I would like to fix the issue preventing compilation for windows from linux from working.
 
 ## Installation instructions
