@@ -7,7 +7,7 @@ let window
 // use electron-reload if in dev environment
 if (process.env.NODE_ENV == 'dev') {
   require('electron-reload')(__dirname, {
-      electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
+      electron: path.join(__dirname, '..', 'node_modules', '.bin', 'electron'),
       hardResetMethod: 'exit'
   })
 }
@@ -24,7 +24,7 @@ function createWindow() {
         window.removeMenu()
     }
 
-    window.loadFile('index.html')
+    window.loadFile(path.join(__dirname, 'index.html'))
 
     return window
 }

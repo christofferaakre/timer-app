@@ -1,13 +1,19 @@
-# timer
+# timer-app
 An open source cross-platform (Windows/macOS/linux) timer app
 written in [Electron.js](https://www.electronjs.org/)
 
 ![timer app demo](img/demo.gif)
 
 ## Installation instructions
-* Download zip from Releases
-* Unzip archive
-* Run executable file
+* mac and linux useres:
+    * Download zip from
+      [Releases](https://github.com/christofferaakre/timer-app/releases)
+    * Unzip archive
+    * Run executable file
+* windows users:
+    * Compile from source according to dev instructions below. in the future
+      I would like to compile windows binaries from my linux setup, but at the
+moment it is not working, so unfortunatel you will have to compile the source code yourself
 
 ## Usage
 * Enter the desired length of your timer into the input field, and press enter or click the Submit button. Supported time formats:
@@ -32,6 +38,11 @@ written in [Electron.js](https://www.electronjs.org/)
     * `npm run make` - runs `electron-forge make` which produces an executable
       file. Will by default generate an executable for the current platform, but
     with options can generate for other platforms too. The executable files are located in the `out` directory, which you have to create first.
+    * You can also build by running `electron-forge make` manually, and this
+      allows you to specify arguments such as platform to build for. However,
+you will likely need to have `electron-forge` installed globally to do so. To
+install it globally, run `npm install -g electron-forge` from your terminal.
+Then, to build for linux for example, run `electron-forge make --platform linux`.
 
 ## TODO
 * ~~More sophisticated parsing for timer, i.e. `5 minutes`, `1 hour and 15
@@ -42,3 +53,6 @@ written in [Electron.js](https://www.electronjs.org/)
 * Let user toggle audio alert on/off
 * Let user toggle focus on timer end on/off
 * Let user change alert sound
+* Fix errors when trying to compile for windows using wine on linux. Currently
+  only compiling for linux and for macos seem to work on linux, and presumably
+the same will be the case for macos
