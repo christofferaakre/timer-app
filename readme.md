@@ -47,6 +47,8 @@ customisability is a good thing, not a bad thing.
   * `(h)h:(m)m:(s)s`, using any of `:.,;/\+`, or white space, as a separator. For example, `03:22:11` will set a timer for 3 hours, 22 minutes and 11 seconds. `2,5,11` will set a timer for 2 hours, 5 minutes and 11 seconds, etc.
   * You can use more human language like `5 minutes`, `2 hours and 30 minutes`, `1hr 20min`, `15 min 30 sec`, etc. You can take a look at the parsing in detail by looking at the definition of the `parseTimeInput` function in `utils.js`; the implementation is very short, and if you are familiar with regex you can very quickly understand how it works by looking at the regex variables that are defined in `utils.js`
 * When the timer is finished, it will play a soft alert sound, and focus itself so the application comes to the front of your screen. You can start a new timer at anytime, regardless of whether the current timer has finished or not by pressing enter or clicking the Submit button.
+* While the input field is active, you can use the up and down arrow keys to navigate through previous timers, similar to how you navigate through previous
+  commands in a terminal
 
 ## development instructions
 1. Clone repository: 
@@ -74,12 +76,12 @@ Then, to build for linux for example, run `electron-forge make --platform linux`
 ## TODO
 * ~~More sophisticated parsing for timer, i.e. `5 minutes`, `1 hour and 15
   minutes`, etc. should work~~ DONE
-* Implement terminal-like command history, ie. hitting up and down arrow keys
-  within the timer input field should navigate through timer history
+* ~~Implement terminal-like command history, ie. hitting up and down arrow keys
+  within the timer input field should navigate through timer history~~ DONE
 * Let user change audio volume of alert
 * Let user toggle audio alert on/off
 * Let user toggle focus on timer end on/off
 * Let user change alert sound
 * Fix errors when trying to compile for windows using wine on linux. Currently
-  only compiling for linux and for macos seem to work on linux, and presumably
-the same will be the case for macos
+  only compiling for linux and for macos seem to work on linux, and presumably 
+  the same will be the case for macos

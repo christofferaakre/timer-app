@@ -1,9 +1,11 @@
+let { commandHistoryKey } = require('./vars')
+
 // Valid separators for hh:mm:ss format
 const seps = '[:.,/\\s;\+]'
 const sepRegex = new RegExp(seps, "gi")
 const hhmmssRegex = new RegExp(`[0-9]+${seps}[0-9]+${seps}[0-9]+`, "gi")
 
-const hourRegex   = /[0-9]+\s*h/gi
+const hourRegex = /[0-9]+\s*h/gi
 const minuteRegex = /[0-9]+\s*m/gi
 const secondRegex = /[0-9]+\s*s/gi
 const numberRegex = /[0-9]+/gi
@@ -20,7 +22,6 @@ function parseTimeInput(rawInput) {
     // match hh:mm:ss format
     if (hhmmssMatch) {
         [hours, minutes, seconds] = hhmmssMatch[0].split(sepRegex).map(Number)
-        console.log(hhmmssMatch[0].split(sepRegex))
     }
 
     else {
@@ -39,7 +40,7 @@ function parseTimeInput(rawInput) {
             seconds = parseInt(secondMatch[0].match(numberRegex)[0])
         }
     }
-    
+
     // if user inputs e.g. 13 hours, 120 minutes, 130 seconds,
     // then we want to change this to 15 hours, 2 minutes, 10 seconds
     // below is the algorithm we use to do this
@@ -75,4 +76,22 @@ function parseTime(hours, minutes, seconds) {
     return `${padNum(hours)}:${padNum(minutes)}:${padNum(seconds)}`
 }
 
-module.exports = {padNum, parseTime, parseTimeInput}
+function initializeAudio(filepath) {
+    audio = new Audio(filepath)
+    audio.volume = 1.0
+    return audio
+}
+
+
+
+// Helper methods on Storage to make storing JSON
+// in local storage more convenient
+Storage.prototype.setObject = function (key, object) {
+    return this.setItem(key, JSON.stringify(object))
+}
+
+Storage.prototype.getObject = function (key) {
+    return JSON.parse(this.getItem(key))
+}
+
+module.exports = { padNum, parseTime, parseTimeInput, initializeAudio }
